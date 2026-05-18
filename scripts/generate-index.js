@@ -1,0 +1,85 @@
+import { readdirSync, writeFileSync, mkdirSync } from "fs";
+
+const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
+
+const htmlFiles = readdirSync("docs")
+  .filter((f) => f.startsWith("pyroluria-") && f.endsWith(".html"))
+  .sort()
+  .reverse();
+
+let links = "";
+for (const name of htmlFiles) {
+  const dateStr = name.replace("pyroluria-", "").replace(".html", "");
+  const parts = dateStr.split("-");
+  if (parts.length !== 3) continue;
+  const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  const dateDisplay = `${parts[0]}年${parseInt(parts[1])}月${parseInt(parts[2])}日`;
+  const weekday = WEEKDAYS[d.getDay()];
+  links += `<li><a href="${name}">📅 ${dateDisplay}（週${weekday}）</a></li>\n`;
+}
+
+const total = htmlFiles.length;
+
+const index = `<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pyroluria Research · 吡咯尿研究文獻日報</title>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; }
+  .container { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 80px 24px; }
+  .logo { font-size: 48px; text-align: center; margin-bottom: 16px; }
+  h1 { text-align: center; font-size: 24px; color: var(--text); margin-bottom: 8px; }
+  .subtitle { text-align: center; color: var(--accent); font-size: 14px; margin-bottom: 16px; }
+  .description { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 32px; line-height: 1.6; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .count { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 32px; }
+  ul { list-style: none; }
+  li { margin-bottom: 8px; }
+  a { color: var(--text); text-decoration: none; display: block; padding: 14px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; transition: all 0.2s; font-size: 15px; }
+  a:hover { background: var(--accent-soft); border-color: var(--accent); transform: translateX(4px); }
+  .links-section { margin-top: 48px; display: flex; flex-direction: column; gap: 8px; }
+  .link-item { color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; transition: all 0.2s; font-size: 14px; }
+  .link-item:hover { background: var(--accent-soft); border-color: var(--accent); transform: translateX(4px); }
+  .link-icon { font-size: 20px; }
+  footer { margin-top: 56px; text-align: center; font-size: 12px; color: var(--muted); }
+  footer a { display: inline; padding: 0; background: none; border: none; color: var(--muted); }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="logo">🔬</div>
+  <h1>Pyroluria Research</h1>
+  <p class="subtitle">吡咯尿研究文獻日報 · 每日自動更新</p>
+  <p class="description">追蹤 PubMed 上關於 Pyroluria / Pyrroluria / Kryptopyrroluria / Mauve Factor / HPL / 尿液吡咯的最新研究文獻，由 AI 自動彙整分析。</p>
+  <p class="count">共 ${total} 期日報</p>
+  <ul>${links}</ul>
+
+  <div class="links-section">
+    <a href="https://www.leepsyclinic.com/" class="link-item" target="_blank">
+      <span class="link-icon">🏥</span>
+      <span>李政洋身心診所首頁</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="link-item" target="_blank">
+      <span class="link-icon">📬</span>
+      <span>訂閱電子報</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="link-item" target="_blank">
+      <span class="link-icon">☕</span>
+      <span>Buy Me a Coffee</span>
+    </a>
+  </div>
+
+  <footer>
+    <p>Powered by PubMed + Zhipu AI · <a href="https://github.com/u8901006/pyroluria-research">GitHub</a></p>
+  </footer>
+</div>
+</body>
+</html>`;
+
+mkdirSync("docs", { recursive: true });
+writeFileSync("docs/index.html", index, "utf-8");
+console.error("[INFO] Index page generated");

@@ -1,0 +1,16 @@
+{
+  "name": "pyroluria-research",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "fetch": "node fetch-papers.js",
+    "summarize": "node summarize.js",
+    "generate": "node generate-html.js",
+    "index": "node generate-index.js",
+    "report": "node fetch-papers.js && node summarize.js && node generate-html.js && node generate-index.js"
+  }
+}
