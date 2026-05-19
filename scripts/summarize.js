@@ -467,6 +467,10 @@ async function main() {
 
   let analysis;
   if (!papersData.papers || papersData.papers.length === 0) {
+    if (existsSync(opts.output)) {
+      console.error(`[INFO] No new papers and ${opts.output} already exists; preserving existing report`);
+      return;
+    }
     console.error("[WARN] No papers found, generating empty report");
     analysis = {
       date: dateStr,
