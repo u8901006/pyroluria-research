@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync, existsSync } from "fs";
 import { resolve, dirname } from "path";
 
 const API_BASE = process.env.NVIDIA_API_BASE || "https://integrate.api.nvidia.com/v1";
-const MODEL_FALLBACK_CHAIN = ["nvidia/nemotron-3-super-120b-a12b", "nvidia/nemotron-3-nano-30b-a3b"];
+const MODEL_FALLBACK_CHAIN = ["nvidia/nemotron-3-ultra-550b-a55b"];
 const MAX_TOKENS = 16384;
 const REQUEST_TIMEOUT = 480000;
 
@@ -244,7 +244,7 @@ function generateHtml(analysis, dateStr) {
   const allPapers = analysis.all_papers || [];
   const keywords = analysis.keywords || [];
   const topicDist = analysis.topic_distribution || {};
-  const modelUsed = analysis._model || "nvidia/nemotron-3-super-120b-a12b";
+  const modelUsed = analysis._model || "nvidia/nemotron-3-ultra-550b-a55b";
 
   let topPicksHtml = "";
   for (const pick of topPicks) {
