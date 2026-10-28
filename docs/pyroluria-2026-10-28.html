@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pyroluria Research &middot; 吡咯尿研究文獻日報 &middot; 2026年10月28日</title>
+<meta name="description" content="2026年10月28日 吡咯尿研究文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .links-banner { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; animation: fadeUp 0.5s ease 0.4s both; }
+  .link-card { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .link-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .link-icon { font-size: 28px; flex-shrink: 0; }
+  .link-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .link-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🔬</div>
+    <div class="header-text">
+      <h1>Pyroluria Research &middot; 吡咯尿研究文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年10月28日</span>
+        <span class="badge badge-count">📊 8 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA Nemotron</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日四篇文獻皆與 Pyroluria (HPL/尿液中吡咯) 無直接關聯，涵蓋胚胎著床分泌組學、異染色質表觀遺傳調控、WT1 癌症疫苗臨床試驗及番茄風味超聲波處理，顯示 PubMed 搜尋條件可能過寬。</p>
+  </div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">🧬</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>利用先進子宮內膜模型繪製整倍體與非整倍體人類胚胎的發育與靶向分泌特徵圖譜</h3>
+          <p class="journal-source">Human Reproduction &middot; Mapping developmental and targeted secretory signatures of euploid and aneuploid human embryos using an advanced endometrial model</p>
+          <p>結合 3D 子宮內膜支架技術 (CREST) 的體外延長培養系統，成功鑑別整倍體、21 三體與 21 單體胚胎在著床後階段的分泌蛋白 (β-hCG、hPL、PAPP-A、PlGF) 與形態動態差異，為無創 PGT-A 提供潛在生物標記。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">69 顆捐贈研究的囊胚期人類胚胎 (EU n=24, T21 n=21, M21 n=24)</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">延長體外培養至 14 d.p.f.：無細胞培養基 vs. CREST 3D 子宮內膜支架系統</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">整倍體 (EU) vs. 21 三體 (T21) vs. 21 單體 (M21)；有無子宮內膜支持</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">分泌蛋白水平 (CALR、β-hCG、hPL、PAPP-A、PlGF) 及形態測量參數 (面積、擴張度、軸比、圓度) 隨時間動態變化</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">實驗室方法</span><span class="tag">生物標記驗證</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42927452/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">🧫</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>HP1 可獨立於 H3K9 甲基化促進異染色質焦點形成、基因抑制與器官發生</h3>
+          <p class="journal-source">Molecular Cell &middot; HP1 can act independently of H3K9 methylation to promote heterochromatin focus formation, gene repression, and organogenesis</p>
+          <p>發現線蟲 HP1 同源物 HPL-2 及 H3K9 甲基轉移酶 MET-2/SETDB1 可在無 H3K9me 修飾情況下，透過共因子驅動的凝聚體組裝形成異染色質焦點並抑制發育基因，揭示表觀遺傳調控的全新 PTM-獨立路徑。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">秀麗隱桿線蟲 (C. elegans) 突變株與野生型</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">HPL-2 (HP1 同源物) 與 MET-2/SETDB1 基因敲除、催化失活突變、H3K9me 結合缺陷突變</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">野生型 vs. 單一/雙重突變體；催化活性 vs. 非催化活性 MET-2</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">異染色質焦點形成、發育基因抑制、細胞命運決定、器官發生表型</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">實驗室方法</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42913631/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">💉</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>Wilms 腫瘤 1 靶向血小板裂解液誘導抗原呈現細胞治療晚期實體瘤的 I 期初探研究</h3>
+          <p class="journal-source">Regenerative Therapy &middot; Pilot study of Wilms tumor 1-targeted human platelet lysate-induced antigen-presenting cells in advanced solid cancer patients</p>
+          <p>自體 WT1-HPL-APC 疫苗在 3 位晚期實體瘤患者中耐受性良好 (不良事件 ≤ G2)，但免疫原性因患者既存免疫抑制微環境 (M-MDSC) 而異質，僅 1 例 HLA-A*24:02 患者體外誘導出 WT1-CTL。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">3 位晚期實體瘤患者 (癌別不一，含 1 例 HLA-A*24:02)</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">WT1-HPL-APC 疫苗 4×10⁷ 細胞 每兩週皮下注射，共 3 劑 (1 療程)</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">治療前 vs. 治療後 (無對照組)；體外誘導 WT1-CTL 比較</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">安全性 (AE)、WT1 特異性 CTL 誘導、腫瘤微環境 T 細胞/巨噬細胞浸潤、外周血 M-MDSC 比例變化</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">臨床試驗</span><span class="tag">生物標記驗證</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42825054/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🍅</span>
+            <span class="utility-low">低實用性</span>
+          </div>
+          <h3>超聲波胞壓激發低溫貯藏後收穫番茄揮發性合成：改善果實風味品質新策略</h3>
+          <p class="journal-source">Food Chemistry &middot; Ultrasound stress stimulated volatile biosynthesis of postharvest tomatoes during low-temperature storage: A strategy for improving the aroma quality of postharvest fruits</p>
+          <p>低強度短時超聲 (1 min) 上調脂肪酸/支鏈胺酸途徑基因 (NCED1, TomloxC, HPL, LeCCD1B, SlBCAT1)；長時 (5 min) 活化苯丙氨酸衍生揮發物途徑，顯著提升葡萄、花香調關鍵揮發物 (β-大馬酮、2-異丁基噻唑等)，改善冷藏番茄風味。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">後收穫番茄果實 (低溫 10°C 貯藏)</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">超聲波預處理：短時 (1 min) vs. 長時 (5 min) vs. 無處理對照</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">不同超聲波處理時長對揮發性有機物 (VOCs) 積累與基因表達的差異影響</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">VOCs 種類與含量 (醇、醛、酮、特徵香氣成分)、相關合成途徑關鍵基因表達量 (qRT-PCR)</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">實驗室方法</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42762566/" target="_blank">閱讀原文 →</a>
+          </div>
+        </div></div>
+
+  <div class='section'><div class='section-title'><span class='section-icon'>📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧬</span>
+            <span class="utility-high utility-sm">高</span>
+          </div>
+          <h3>利用先進子宮內膜模型繪製整倍體與非整倍體人類胚胎的發育與靶向分泌特徵圖譜</h3>
+          <p class="journal-source">Human Reproduction</p>
+          <p>結合 3D 子宮內膜支架技術 (CREST) 的體外延長培養系統，成功鑑別整倍體、21 三體與 21 單體胚胎在著床後階段的分泌蛋白與形態動態差異。</p>
+          <div class="card-footer">
+            <span class="tag">實驗室方法</span><span class="tag">生物標記驗證</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42927452/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧫</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>HP1 可獨立於 H3K9 甲基化促進異染色質焦點形成、基因抑制與器官發生</h3>
+          <p class="journal-source">Molecular Cell</p>
+          <p>發現 HP1 同源物 HPL-2 及 MET-2 可在無 H3K9me 情況下透過共因子驅動凝聚體組裝形成異染色質焦點並抑制發育基因。</p>
+          <div class="card-footer">
+            <span class="tag">實驗室方法</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42913631/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💉</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Wilms 腫瘤 1 靶向血小板裂解液誘導抗原呈現細胞治療晚期實體瘤的 I 期初探研究</h3>
+          <p class="journal-source">Regenerative Therapy</p>
+          <p>自體 WT1-HPL-APC 疫苗耐受性佳，但免疫原性受既存免疫抑制微環境限制，僅 1 例患者體外誘導出 WT1-CTL。</p>
+          <div class="card-footer">
+            <span class="tag">臨床試驗</span><span class="tag">生物標記驗證</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42825054/" target="_blank">PubMed →</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🍅</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>超聲波胞壓激發低溫貯藏後收穫番茄揮發性合成：改善果實風味品質新策略</h3>
+          <p class="journal-source">Food Chemistry</p>
+          <p>超聲波處理上調關鍵合成基因表達，顯著增加番茄冷藏期間的特徵香氣揮發物，改善風味品質。</p>
+          <div class="card-footer">
+            <span class="tag">實驗室方法</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42762566/" target="_blank">PubMed →</a>
+          </div>
+        </div></div>
+
+  <div class='topic-section section'><div class='section-title'><span class='section-icon'>📊</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">生殖醫學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">表觀遺傳學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">腫瘤免疫治療</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">1</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">食品科學</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">1</span>
+            </div></div>
+
+  <div class='keywords-section section'><div class='section-title'><span class='section-icon'>🏷️</span>關鍵字</div><div class='keywords'><span class="keyword">胚胎分泌組學</span><span class="keyword">非整倍體</span><span class="keyword">異染色質</span><span class="keyword">HP1</span><span class="keyword">WT1 疫苗</span><span class="keyword">血小板裂解液</span><span class="keyword">超聲波</span><span class="keyword">番茄風味</span><span class="keyword">揮發性有機物</span></div></div>
+
+  <div class="links-banner">
+    <a href="https://www.leepsyclinic.com/" class="link-card" target="_blank">
+      <span class="link-icon">🏥</span>
+      <span class="link-name">李政洋身心診所首頁</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="link-card" target="_blank">
+      <span class="link-icon">📬</span>
+      <span class="link-name">訂閱電子報</span>
+      <span class="link-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="link-card" target="_blank">
+      <span class="link-icon">☕</span>
+      <span class="link-name">Buy Me a Coffee</span>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-ultra-550b-a55b</span>
+    <span><a href="https://github.com/u8901006/pyroluria-research">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
